@@ -8,6 +8,10 @@ import org.example.model.Position;
 import java.util.*;
 import java.util.random.RandomGenerator;
 
+/**
+ * Evento globale Epidemia: quando l'evento è attivo ogni animale ha una certa
+ * probabilità di morire
+ */
 public class EpidemiaEvent implements GlobalEvent {
 
     private final int frequency;
@@ -16,10 +20,10 @@ public class EpidemiaEvent implements GlobalEvent {
     private int remainingTurns;
 
     /**
-     * Costruisce un evento Epidemia con generatore di numeri casuali personalizzato (utile per i test).
+     * Costruisce un evento Epidemia con generatore di numeri casuali personalizzato
      *
-     * @param frequency        turni tra un'attivazione e l'altra (EVERY)
-     * @param deathProbability probabilità di morte nell'intervallo [0.0, 1.0] (DEATH_PROB)
+     * @param frequency        turni tra un'attivazione e l'altra
+     * @param deathProbability probabilità di morte nell'intervallo [0.0, 1.0]
      * @param random           generatore di numeri casuali
      */
     public EpidemiaEvent(int frequency, double deathProbability, RandomGenerator random) {

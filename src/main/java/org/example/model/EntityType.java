@@ -1,7 +1,7 @@
 package org.example.model;
 
 /**
- * Categorie principali di entità presenti nell'ecosistema.
+ * Categorie di entità presenti nell'ecosistema
  */
 public enum EntityType {
     PLANT,

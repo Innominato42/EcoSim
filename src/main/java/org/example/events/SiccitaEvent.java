@@ -2,12 +2,12 @@ package org.example.events;
 
 /**
  * Evento globale Siccità: riduce il tasso di riproduzione di tutte le piante
- * moltiplicandolo per un fattore riduttivo (RATE_FACTOR < 1.0).
+ * moltiplicandolo per un fattore riduttivo
  */
 public class SiccitaEvent extends AbstractPlantRateEvent {
 
     /**
-     * Costruisce un evento Siccità con durata personalizzata.
+     * Costruisce un evento Siccità con durata personalizzata
      *
      * @param frequency  turni tra un'attivazione e l'altra (EVERY)
      * @param rateFactor fattore riduttivo nell'intervallo [0.0, 1.0]

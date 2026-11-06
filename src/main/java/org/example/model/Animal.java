@@ -3,7 +3,7 @@ package org.example.model;
 import java.util.random.RandomGenerator;
 
 /**
- * Contratto per gli animali, entità mobili che si muovono, si nutrono e si riproducono.
+ * Interfaccia per gli animali, entità che si muovono, si nutrono e si riproducono.
  */
 public interface Animal extends Entity {
 

@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * Implementazione base comune a tutte le entità dell'ecosistema.
- * Gestisce i dati identificativi, estetici e lo stato vitale.
+ * Gestisce i dati identificativi, estetici e lo stato vitale
  */
 public abstract class AbstractEntity implements Entity {
 
@@ -14,7 +14,7 @@ public abstract class AbstractEntity implements Entity {
     private boolean alive;
 
     /**
-     * Costruisce una nuova entità con i parametri base.
+     * Costruisce una nuova entità con i parametri base
      *
      * @param speciesName nome della specie o tipo (es. "Erba", "Coniglio", "Roccia")
      * @param symbol      carattere per la visualizzazione testuale
@@ -51,7 +51,7 @@ public abstract class AbstractEntity implements Entity {
     }
 
     /**
-     * Segna l'entità come morta/consumata per la successiva rimozione dalla griglia.
+     * Segna l'entità come morta per la successiva rimozione dalla griglia
      */
     public void die() {
         this.alive = false;

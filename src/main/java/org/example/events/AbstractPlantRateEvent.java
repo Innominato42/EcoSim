@@ -8,8 +8,8 @@ import org.example.model.Plant;
 import java.util.Objects;
 
 /**
- * Classe base astratta per gli eventi globali che alterano temporaneamente
- * il tasso di riproduzione delle piante per un determinato numero di turni.
+ * Classe base astratta per gli eventi globali che modificano il tasso di
+ * riproduzione delle piante
  */
 public abstract class AbstractPlantRateEvent implements GlobalEvent {
 
@@ -22,12 +22,12 @@ public abstract class AbstractPlantRateEvent implements GlobalEvent {
     private int remainingTurns;
 
     /**
-     * Costruisce un evento basato sulla modifica del tasso di riproduzione delle piante.
+     * Costruisce un evento basato sulla modifica del tasso di riproduzione delle piante
      *
      * @param name       nome dell'evento
-     * @param frequency  frequenza di attivazione (EVERY)
-     * @param rateFactor fattore moltiplicativo del tasso di riproduzione (RATE_FACTOR)
-     * @param duration   durata dell'evento in turni (DURATION)
+     * @param frequency  frequenza di attivazione
+     * @param rateFactor fattore moltiplicativo del tasso di riproduzione
+     * @param duration   durata dell'evento in turni
      */
     protected AbstractPlantRateEvent(String name, int frequency, double rateFactor, int duration) {
         if (frequency <= 0) {

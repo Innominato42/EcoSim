@@ -1,8 +1,8 @@
 package org.example.model;
 
 /**
- * Rappresenta un colore nel formato RGB con componenti nell'intervallo [0, 255].
- * Mantiene il modello indipendente dal toolkit grafico scelto per la UI.
+ * Rappresenta un colore nel formato RGB con componenti nell'intervallo [0, 255]
+ * Mantiene il modello indipendente dal toolkit grafico scelto per la UI
  *
  * @param r componente rossa (0-255)
  * @param g componente verde (0-255)

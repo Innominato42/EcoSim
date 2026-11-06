@@ -3,7 +3,7 @@ package org.example.model;
 import java.util.Optional;
 
 /**
- * Definisce la topologia dei bordi della griglia e la strategia di risoluzione delle coordinate.
+ * Definisce la topologia dei bordi della griglia e la strategia di risoluzione delle coordinate
  */
 public enum BorderType {
 
@@ -21,7 +21,7 @@ public enum BorderType {
     },
 
     /**
-     * Griglia toroidale: il lato destro è adiacente al sinistro e l'alto al basso.
+     * Griglia toroidale: il lato destro è adiacente al sinistro e l'alto al basso
      */
     TOROIDAL {
         @Override
@@ -33,7 +33,7 @@ public enum BorderType {
     };
 
     /**
-     * Risolve una posizione rispetto alle dimensioni della griglia.
+     * Risolve una posizione rispetto alle dimensioni della griglia
      *
      * @param pos    la posizione da verificare o normalizzare
      * @param width  larghezza della griglia

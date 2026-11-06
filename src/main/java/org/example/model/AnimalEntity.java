@@ -11,7 +11,7 @@ import java.util.random.RandomGenerator;
 
 /**
  * Implementazione concreta di un animale il cui ciclo di vita è delegato
- * a una catena di responsabilità e a strategie comportamentali componibili.
+ * a una catena di responsabilità e a strategie comportamentali componibili
  */
 public class AnimalEntity extends AbstractEntity implements Animal {
 
@@ -28,7 +28,7 @@ public class AnimalEntity extends AbstractEntity implements Animal {
     private final AnimalTurnChain turnChain;
 
     /**
-     * Costruisce un nuovo animale con tutte le caratteristiche della specie.
+     * Costruisce un nuovo animale con tutte le caratteristiche della specie
      */
     public AnimalEntity(
             String speciesName,
@@ -114,7 +114,7 @@ public class AnimalEntity extends AbstractEntity implements Animal {
     }
 
     /**
-     * Imposta direttamente l'energia e l'età (usato nella ricostruzione da File di Stato).
+     * Imposta direttamente l'energia e l'età
      *
      * @param energy energia salvata
      * @param age    età salvata

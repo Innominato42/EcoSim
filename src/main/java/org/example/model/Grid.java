@@ -3,7 +3,7 @@ package org.example.model;
 import java.util.*;
 
 /**
- * Rappresenta la griglia discreta 2D in cui si svolge la simulazione.
+ * Rappresenta la griglia discreta 2D in cui si svolge la simulazione
  */
 public class Grid {
 
@@ -14,10 +14,10 @@ public class Grid {
     private final Map<Position, Entity> cells;
 
     /**
-     * Costruisce una nuova griglia di simulazione.
+     * Costruisce una nuova griglia di simulazione
      *
-     * @param width           larghezza in celle (> 0)
-     * @param height          altezza in celle (> 0)
+     * @param width           larghezza in celle
+     * @param height          altezza in celle
      * @param borderType      tipo di bordo (invalicabile o toroidale)
      * @param backgroundColor colore di sfondo del bioma
      */
@@ -33,7 +33,7 @@ public class Grid {
     }
 
     /**
-     * Normalizza o valida una coordinata in base alla topologia dei bordi della griglia.
+     * Valida una coordinata in base alla topologia dei bordi della griglia
      *
      * @param position posizione candidata
      * @return Optional con la posizione effettiva sulla griglia, o empty se invalida
@@ -43,7 +43,7 @@ public class Grid {
     }
 
     /**
-     * Posiziona un'entità nella cella specificata se la coordinata è valida e libera.
+     * Posiziona un'entità nella cella specificata se la coordinata è valida e libera
      *
      * @param position coordinata di destinazione
      * @param entity   entità da posizionare
@@ -60,7 +60,7 @@ public class Grid {
     }
 
     /**
-     * Restituisce l'entità presente in una determinata posizione.
+     * Restituisce l'entità presente in una determinata posizione
      *
      * @param position coordinata da ispezionare
      * @return Optional contenente l'entità se presente, altrimenti empty
@@ -70,7 +70,7 @@ public class Grid {
     }
 
     /**
-     * Rimuove l'entità presente nella posizione indicata.
+     * Rimuove l'entità presente nella posizione indicata
      *
      * @param position coordinata da liberare
      * @return Optional con l'entità rimossa, se era presente
@@ -80,9 +80,7 @@ public class Grid {
     }
 
     /**
-     * Restituisce le posizioni adiacenti (nelle 4 direzioni cardinali o 8 direzioni) libere.
-     * Utile per la propagazione delle piante e la nascita di nuovi animali.
-     *
+     * Restituisce le posizioni adiacenti (nelle 4 direzioni cardinali o 8 direzioni) libere
      * @param center posizione centrale
      * @return lista di posizioni adiacenti valide e attualmente prive di entità
      */
@@ -103,7 +101,7 @@ public class Grid {
     }
 
     /**
-     * Restituisce una vista immutabile di tutte le entità posizionate sulla griglia.
+     * Restituisce una vista immutabile di tutte le entità posizionate sulla griglia
      *
      * @return mappa immutabile Posizione -> Entità
      */

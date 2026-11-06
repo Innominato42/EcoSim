@@ -29,7 +29,6 @@ class SimulationEngineTest {
 
     @Test
     void testDeadAnimalsAreRemovedFromGridAtEndOfTurn() {
-        // Coniglio con energia 1: muore nel primo turno per invecchiamento e deve essere rimosso al passo 9
         Animal dyingRabbit = new AnimalEntity(
                 "Coniglio", 'C', new RgbColor(255, 255, 255),
                 1, 50, 40, 5, 35, Diet.herbivore(), 3, 2, chain
@@ -50,22 +49,18 @@ class SimulationEngineTest {
         Plant grass = new PlantEntity("Erba", 'G', new RgbColor(0, 180, 0), 10, 0.0);
         grid.placeEntity(new Position(2, 2), grass);
 
-        // Evento Siccità che si attiva ogni 2 turni con durata 4
         GlobalEvent siccita = new SiccitaEvent(2, 0.5, 4);
         SimulationEngine engine = new SimulationEngine(grid, List.of(siccita), 0, new Random(42));
 
         List<SimulationStats> receivedNotifications = new ArrayList<>();
         engine.addObserver((g, stats) -> receivedNotifications.add(stats));
 
-        // Eseguiamo 2 turni
         engine.run(2);
 
         assertEquals(2, receivedNotifications.size());
 
-        // Al turno 1 l'evento non era ancora attivo
         assertTrue(receivedNotifications.get(0).activeEvents().isEmpty());
 
-        // Al turno 2 l'evento Siccità si è attivato
         SimulationStats turn2Stats = receivedNotifications.get(1);
         assertEquals(2, turn2Stats.turn());
         assertEquals(1, turn2Stats.activeEvents().size());

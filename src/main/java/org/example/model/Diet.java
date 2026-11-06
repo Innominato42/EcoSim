@@ -6,8 +6,8 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * Rappresenta il regime alimentare di un animale (erbivoro, carnivoro, onnivoro).
- * Determina quali entità possono essere consumate come cibo.
+ * Rappresenta la dieta di un animale (erbivoro, carnivoro, onnivoro)
+ * Determina quali entità possono essere consumate come cibo
  */
 public class Diet {
 
@@ -15,10 +15,10 @@ public class Diet {
     private final Set<String> preySpecies;
 
     /**
-     * Costruisce una dieta personalizzata.
+     * Costruisce una dieta personalizzata
      *
      * @param eatsPlants  true se l'animale si nutre di piante
-     * @param preySpecies insieme dei nomi delle specie animali predate (o "*" per tutte)
+     * @param preySpecies insieme dei nomi delle specie animali cacciati (o "*" per tutte)
      */
     public Diet(boolean eatsPlants, Set<String> preySpecies) {
         this.eatsPlants = eatsPlants;
@@ -28,7 +28,7 @@ public class Diet {
     }
 
     /**
-     * Crea una dieta esclusivamente erbivora (DIET PLANT).
+     * Crea una dieta erbivora
      *
      * @return istanza di Diet erbivora
      */
@@ -37,7 +37,7 @@ public class Diet {
     }
 
     /**
-     * Crea una dieta carnivora rivolta a specifiche specie (es. DIET ANIMAL:Coniglio).
+     * Crea una dieta carnivora verso specie specifiche
      *
      * @param species nomi delle specie animali cacciate
      * @return istanza di Diet carnivora
@@ -47,7 +47,7 @@ public class Diet {
     }
 
     /**
-     * Crea una dieta onnivora che include sia piante sia determinate specie animali.
+     * Crea una dieta onnivora che include sia piante sia determinate specie animali
      *
      * @param species nomi delle specie animali cacciate
      * @return istanza di Diet onnivora
@@ -57,10 +57,10 @@ public class Diet {
     }
 
     /**
-     * Verifica se l'entità specificata rientra nella dieta dell'animale.
+     * Verifica se l'entità specificata rientra nella dieta dell'animale
      *
      * @param target entità candidata ad essere mangiata
-     * @return true se l'entità è viva ed è commestibile secondo questa dieta
+     * @return true se l'entità è viva ed è commestibile secondo la dieta
      */
     public boolean canEat(Entity target) {
         if (target == null || !target.isAlive()) {

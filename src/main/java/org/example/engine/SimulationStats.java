@@ -7,8 +7,8 @@ import java.util.*;
  * al termine di un turno di simulazione.
  *
  * @param turn              numero del turno corrente
- * @param populationBySpecies mappa immutabile (Nome Specie -> Numero di individui vivi)
- * @param activeEvents      lista degli eventi globali attualmente attivi con i turni rimanenti
+ * @param populationBySpecies mappa immutabile (Nome specie e numero di individui vivi per quella specie)
+ * @param activeEvents      lista degli eventi globali attivi e turni rimanenti
  */
 public record SimulationStats(
         int turn,
@@ -16,7 +16,7 @@ public record SimulationStats(
         List<ActiveEventInfo> activeEvents) {
 
     /**
-     * Dati sintetici di un evento globale attualmente attivo.
+     * Dati di un evento globale attualmente attivo
      *
      * @param name           nome dell'evento
      * @param remainingTurns turni rimanenti prima della fine dell'effetto

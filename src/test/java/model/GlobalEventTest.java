@@ -31,10 +31,8 @@ class GlobalEventTest {
 
     @Test
     void testSiccitaReducesPlantReproductionRateAndRestoresAfterDuration() {
-        // Siccità ogni 20 turni, fattore 0.3, durata 3 turni
         SiccitaEvent siccita = new SiccitaEvent(20, 0.3, 3);
 
-        // Attivazione al turno 20
         siccita.updateTurn(20, grid);
 
         assertTrue(siccita.isActive());
@@ -42,16 +40,13 @@ class GlobalEventTest {
         assertEquals(0.06, grass1.getEffectiveReproductionRate(), 1e-6);
         assertEquals(0.12, grass2.getEffectiveReproductionRate(), 1e-6);
 
-        // Turno 21 (rimangono 2 turni)
         siccita.updateTurn(21, grid);
         assertEquals(2, siccita.getRemainingTurns());
         assertEquals(0.06, grass1.getEffectiveReproductionRate(), 1e-6);
 
-        // Turno 22 (rimane 1 turno)
         siccita.updateTurn(22, grid);
         assertEquals(1, siccita.getRemainingTurns());
 
-        // Turno 23 (scade la durata: i tassi devono tornare ai valori base)
         siccita.updateTurn(23, grid);
         assertFalse(siccita.isActive());
         assertEquals(0, siccita.getRemainingTurns());
@@ -61,16 +56,13 @@ class GlobalEventTest {
 
     @Test
     void testProliferazioneAmplifiesPlantReproductionRate() {
-        // Proliferazione ogni 10 turni, fattore 2.5, durata default (5 turni)
         ProliferazioneEvent proliferazione = new ProliferazioneEvent(10, 2.5);
 
         proliferazione.apply(grid);
 
         assertTrue(proliferazione.isActive());
         assertEquals(5, proliferazione.getRemainingTurns());
-        // 0.20 * 2.5 = 0.50
         assertEquals(0.50, grass1.getEffectiveReproductionRate(), 1e-6);
-        // 0.40 * 2.5 = 1.0 (limitato superiormente a 1.0)
         assertEquals(1.00, grass2.getEffectiveReproductionRate(), 1e-6);
     }
 
@@ -85,14 +77,11 @@ class GlobalEventTest {
         grid.placeEntity(new Position(2, 2), r1);
         grid.placeEntity(new Position(3, 3), r2);
         assertEquals(4, grid.getAllEntities().size()); // 2 piante + 2 conigli
-
-        // Epidemia con DEATH_PROB = 1.0 (mortalità 100% per test deterministico)
         EpidemiaEvent epidemia = new EpidemiaEvent(15, 1.0, new Random(42));
         epidemia.apply(grid);
 
         assertFalse(r1.isAlive());
         assertFalse(r2.isAlive());
-        // Le piante devono rimanere vive e presenti sulla griglia
         assertTrue(grass1.isAlive());
         assertTrue(grass2.isAlive());
         assertEquals(2, grid.getAllEntities().size());

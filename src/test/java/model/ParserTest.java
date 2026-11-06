@@ -44,10 +44,8 @@ class ParserTest {
         assertEquals(BorderType.TOROIDAL, grid.getBorderType());
         assertEquals(new RgbColor(34, 139, 34), grid.getBackgroundColor());
 
-        // Verifica che siano state posizionate tutte le 200 + 30 + 8 + 20 = 258 entità
         assertEquals(258, grid.getAllEntities().size());
 
-        // Verifica l'evento globale configurato
         assertEquals(1, config.getEvents().size());
         assertEquals("Siccita", config.getEvents().get(0).getName());
         assertEquals(20, config.getEvents().get(0).getFrequency());
@@ -79,7 +77,6 @@ class ParserTest {
         Entity grassEntity = grid.getEntityAt(new Position(10, 10)).orElseThrow();
         assertEquals("Erba", grassEntity.getSpeciesName());
 
-        // Verifica che la ri-serializzazione produca i medesimi dati
         String serializedAgain = serializer.serialize(grid, engine.getCurrentTurn());
         assertTrue(serializedAgain.contains("STATE TURN 143"));
         assertTrue(serializedAgain.contains("ENTITY Coniglio 12 7 ENERGY 18 AGE 11"));

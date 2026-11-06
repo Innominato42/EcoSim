@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.random.RandomGenerator;
 
 /**
- * Implementazione concreta di una pianta capace di propagarsi nelle celle adiacenti libere.
+ * Implementazione concreta di una pianta che puo riprodursi nelle celle adiacenti libere
  */
 public class PlantEntity extends AbstractEntity implements Plant {
 
@@ -20,7 +20,7 @@ public class PlantEntity extends AbstractEntity implements Plant {
      * @param speciesName          nome della specie (es. "Erba")
      * @param symbol               simbolo testuale (es. 'G')
      * @param color                colore RGB
-     * @param energy               energia fornita a chi la consuma (> 0)
+     * @param energy               energia fornita a chi la consuma
      * @param baseReproductionRate probabilità di riproduzione per turno [0.0, 1.0]
      */
     public PlantEntity(String speciesName, char symbol, RgbColor color, int energy, double baseReproductionRate) {

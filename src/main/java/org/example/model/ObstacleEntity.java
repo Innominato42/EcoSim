@@ -1,7 +1,7 @@
 package org.example.model;
 
 /**
- * Implementazione concreta di un ostacolo statico e invalicabile.
+ * Implementazione concreta di un ostacolo statico e invalicabile
  */
 public class ObstacleEntity extends AbstractEntity implements Obstacle {
 

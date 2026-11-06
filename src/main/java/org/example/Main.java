@@ -1,25 +1,14 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-
-import org.example.engine.SimulationEngine;
 import org.example.parser.ConfigParser;
-import org.example.parser.ConfigurationException;
 import org.example.parser.SimulationConfig;
-import org.example.parser.StateSerializer;
-import org.example.ui.ConsoleView;
 import org.example.ui.SwingGuiView;
 
-import javax.swing.*;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import javax.swing.SwingUtilities;
 
 /**
- * Punto di ingresso principale dell'applicazione EcoSim.
- * Supporta sia l'avvio dell'interfaccia grafica (default con gradle run),
- * sia l'esecuzione a console passando il file di configurazione/stato da riga di comando.
+ * Classe Main che consente di avviare il simulatore EcoSim
+ * Avvia l'interfaccia grafica Swing con la configurazione iniziale di default
  */
 public class Main {
 
@@ -45,48 +34,15 @@ public class Main {
             """;
 
     /**
-     * Avvia il simulatore EcoSim.
-     * Senza argomenti: avvia la GUI Swing con la configurazione di default.
-     * Con argomenti (<percorso_file> [numero_turni] [output_stato]): esegue in modalità Console.
+     * Avvia il simulatore EcoSim aprendo l'interfaccia grafica
      *
-     * @param args argomenti da riga di comando
+     * @param args argomenti da riga di comando (non utilizzati)
      */
     public static void main(String[] args) {
-        if (args.length == 0) {
-            SwingUtilities.invokeLater(() -> {
-                SimulationConfig defaultConfig = new ConfigParser().parse(DEFAULT_CONFIG);
-                SwingGuiView gui = new SwingGuiView(defaultConfig);
-                gui.setVisible(true);
-            });
-            return;
-        }
-
-        // Modalità Console (Implementazione Media)
-        try {
-            Path inputPath = Path.of(args[0]);
-            int turns = (args.length >= 2) ? Integer.parseInt(args[1]) : 50;
-            Path outputPath = (args.length >= 3) ? Path.of(args[2]) : Path.of("final_state.txt");
-
-            String content = Files.readString(inputPath).trim();
-            SimulationEngine engine;
-            if (content.startsWith("STATE")) {
-                engine = new StateSerializer().deserialize(content, null);
-            } else {
-                SimulationConfig config = new ConfigParser().parse(content);
-                engine = new SimulationEngine(config.getGrid(), config.getEvents());
-            }
-
-            ConsoleView consoleView = new ConsoleView();
-            consoleView.runConsoleSimulation(engine, turns, outputPath);
-        } catch (NumberFormatException e) {
-            System.err.println("Errore: il numero di turni specificato non è un intero valido.");
-            System.exit(1);
-        } catch (IOException e) {
-            System.err.println("Errore di I/O: impossibile leggere il file specificato (" + e.getMessage() + ").");
-            System.exit(1);
-        } catch (ConfigurationException | IllegalArgumentException e) {
-            System.err.println("Errore di configurazione: " + e.getMessage());
-            System.exit(1);
-        }
+        SwingUtilities.invokeLater(() -> {
+            SimulationConfig defaultConfig = new ConfigParser().parse(DEFAULT_CONFIG);
+            SwingGuiView gui = new SwingGuiView(defaultConfig);
+            gui.setVisible(true);
+        });
     }
 }

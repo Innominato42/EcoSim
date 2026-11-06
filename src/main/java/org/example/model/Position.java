@@ -1,8 +1,8 @@
 package org.example.model;
 
 /**
- * Rappresenta una coordinata discreta (x, y) all'interno della griglia di simulazione.
- * L'origine (0, 0) corrisponde alla cella in basso a sinistra.
+ * Rappresenta una coordinata discreta (x, y) all'interno della griglia di simulazione
+ * L'origine (0, 0) corrisponde alla cella in basso a sinistra
  *
  * @param x coordinata orizzontale (colonna)
  * @param y coordinata verticale (riga)

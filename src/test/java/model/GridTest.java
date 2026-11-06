@@ -26,12 +26,10 @@ class GridTest {
 
     @Test
     void testToroidalWrappingAtCorners() {
-        // (-1, -1) su una griglia 10x10 toroidale deve diventare (9, 9)
         Optional<Position> wrapped = toroidalGrid.resolvePosition(new Position(-1, -1));
         assertTrue(wrapped.isPresent());
         assertEquals(new Position(9, 9), wrapped.get());
 
-        // (10, 10) deve avvolgersi sull'origine (0, 0) in basso a sinistra
         Optional<Position> wrappedOrigin = toroidalGrid.resolvePosition(new Position(10, 10));
         assertTrue(wrappedOrigin.isPresent());
         assertEquals(new Position(0, 0), wrappedOrigin.get());
@@ -47,11 +45,8 @@ class GridTest {
     @Test
     void testFreeAdjacentPositionsAtOriginCorner() {
         Position origin = new Position(0, 0);
-        // Su griglia con bordi invalicabili, l'angolo (0,0) ha solo 3 celle adiacenti: (1,0), (0,1), (1,1)
         List<Position> boundedFree = boundedGrid.getFreeAdjacentPositions(origin);
         assertEquals(3, boundedFree.size());
-
-        // Su griglia toroidale, l'angolo (0,0) ha tutte e 8 le celle adiacenti disponibili
         List<Position> toroidalFree = toroidalGrid.getFreeAdjacentPositions(origin);
         assertEquals(8, toroidalFree.size());
     }
