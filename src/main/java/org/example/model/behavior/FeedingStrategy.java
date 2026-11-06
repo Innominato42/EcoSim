@@ -8,13 +8,13 @@ import org.example.model.Position;
 import java.util.Optional;
 
 /**
- * Strategy per la ricerca del cibo e l'alimentazione di un animale.
+ * Strategy per la ricerca del cibo e l'alimentazione di un animale
  */
 public interface FeedingStrategy {
 
     /**
      * Scansiona il raggio visivo dell'animale e restituisce lo spostamento (dx, dy)
-     * verso il cibo commestibile più vicino.
+     * verso il cibo commestibile più vicino
      *
      * @param animal     animale che cerca cibo
      * @param currentPos posizione attuale dell'animale
@@ -24,7 +24,7 @@ public interface FeedingStrategy {
     Optional<Position> findClosestFoodOffset(Animal animal, Position currentPos, Grid grid);
 
     /**
-     * Consuma l'entità cibo raggiunta e incrementa l'energia dell'animale.
+     * Consuma l'entità cibo raggiunta e incrementa l'energia dell'animale
      *
      * @param animal animale che si nutre
      * @param food   entità cibo raggiunta

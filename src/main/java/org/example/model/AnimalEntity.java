@@ -28,7 +28,20 @@ public class AnimalEntity extends AbstractEntity implements Animal {
     private final AnimalTurnChain turnChain;
 
     /**
-     * Costruisce un nuovo animale con tutte le caratteristiche della specie
+     * Costruisce un nuovo animale con tutte le caratteristiche della specie.
+     *
+     * @param speciesName        Il nome della specie
+     * @param symbol             Il carattere che rappresenta l'animale sulla griglia
+     * @param color              Il colore dell'animale nell'interfaccia grafica
+     * @param initialEnergy      L'energia iniziale alla nascita
+     * @param maxEnergy          L'energia massima accumulabile
+     * @param maxAge             L'età massima prima della morte per vecchiaia
+     * @param minReproductiveAge L'età minima per potersi riprodurre
+     * @param maxReproductiveAge L'età massima per potersi riprodurre
+     * @param diet               La dieta dell'animale (cosa mangia)
+     * @param sightRange         Il raggio visivo per cercare cibo o partner
+     * @param speed              I passi che l'animale compie in un singolo turno
+     * @param turnChain          La logica comportamentale associata alla specie
      */
     public AnimalEntity(
             String speciesName,

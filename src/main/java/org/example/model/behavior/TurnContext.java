@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.random.RandomGenerator;
 
 /**
- * Contesto di esecuzione di un singolo turno per un animale attraverso la Chain of Responsibility.
+ * Contesto di esecuzione di un singolo turno per un animale attraverso la Chain of Responsibility
  */
 public class TurnContext {
 
@@ -22,6 +22,14 @@ public class TurnContext {
     private Position targetFoodOffset;
     private Entity reachedFood;
 
+    /**
+     * Costruisce un nuovo contesto di turno per l'animale specificato.
+     *
+     * @param animal          l'animale che sta effettuando il turno
+     * @param currentPosition la posizione corrente dell'animale sulla griglia
+     * @param grid            la griglia di gioco su cui si svolge la simulazione
+     * @param random          il generatore di numeri casuali
+     */
     public TurnContext(Animal animal, Position currentPosition, Grid grid, RandomGenerator random) {
         this.animal = animal;
         this.currentPosition = currentPosition;

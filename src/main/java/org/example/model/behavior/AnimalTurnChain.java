@@ -7,14 +7,14 @@ import org.example.model.Animal;
 import java.util.Objects;
 
 /**
- * Costruisce e coordina la Catena di Responsabilità configurabile per il turno di un animale.
+ * Costruisce e coordina la Catena di Responsabilità configurabile per il turno di un animale
  */
 public class AnimalTurnChain {
 
     private final TurnStep head;
 
     /**
-     * Costruisce una catena personalizzata a partire dal primo anello.
+     * Costruisce una catena personalizzata a partire dal primo anello
      *
      * @param head primo passo della catena
      */
@@ -23,7 +23,7 @@ public class AnimalTurnChain {
     }
 
     /**
-     * Crea la catena standard a 6 passi prevista dalla specifica combinando le tre Strategy.
+     * Crea la catena standard a 6 passi combinando le tre Strategy
      *
      * @param feedingStrategy      strategia di ricerca cibo e nutrimento
      * @param movementStrategy     strategia di movimento
@@ -35,7 +35,7 @@ public class AnimalTurnChain {
             MovementStrategy movementStrategy,
             ReproductionStrategy reproductionStrategy) {
 
-        // 1. Invecchia
+        //Invecchia
         TurnStep agingStep = new TurnStep() {
             @Override
             protected boolean executeStep(TurnContext ctx) {
@@ -46,20 +46,20 @@ public class AnimalTurnChain {
             }
         };
 
-        // 2. Controlla vitalità
+        //Controlla vitalità
         TurnStep vitalityStep = new TurnStep() {
             @Override
             protected boolean executeStep(TurnContext ctx) {
                 Animal a = ctx.getAnimal();
                 if (a.getEnergy() <= 0 || a.getAge() > a.getMaxAge()) {
                     a.die();
-                    return false; // Interrompe la catena: l'animale è morto
+                    return false; //l'animale è morto, viene interrotta la catena
                 }
                 return true;
             }
         };
 
-        // 3. Cerca cibo
+        //Cerca cibo
         TurnStep seekFoodStep = new TurnStep() {
             @Override
             protected boolean executeStep(TurnContext ctx) {
@@ -69,7 +69,7 @@ public class AnimalTurnChain {
             }
         };
 
-        // 4. Si muove
+        //Si muove
         TurnStep moveStep = new TurnStep() {
             @Override
             protected boolean executeStep(TurnContext ctx) {
@@ -78,7 +78,7 @@ public class AnimalTurnChain {
             }
         };
 
-        // 5. Mangia
+        //Mangia
         TurnStep eatStep = new TurnStep() {
             @Override
             protected boolean executeStep(TurnContext ctx) {
@@ -87,7 +87,7 @@ public class AnimalTurnChain {
             }
         };
 
-        // 6. Si riproduce
+        //Si riproduce
         TurnStep reproduceStep = new TurnStep() {
             @Override
             protected boolean executeStep(TurnContext ctx) {
@@ -106,7 +106,7 @@ public class AnimalTurnChain {
     }
 
     /**
-     * Crea la catena standard con le implementazioni di default delle tre Strategy.
+     * Crea la catena standard con le implementazioni di default delle tre Strategy
      *
      * @return catena standard pronta all'uso
      */
@@ -119,7 +119,7 @@ public class AnimalTurnChain {
     }
 
     /**
-     * Avvia l'esecuzione della catena di responsabilità sul contesto fornito.
+     * Avvia l'esecuzione della catena di responsabilità sul contesto fornito
      *
      * @param context contesto del turno
      */

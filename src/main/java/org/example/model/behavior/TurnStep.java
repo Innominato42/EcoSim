@@ -1,14 +1,14 @@
 package org.example.model.behavior;
 
 /**
- * Rappresenta un singolo anello della Catena di Responsabilità del turno di un animale.
+ * Rappresenta un singolo anello della Catena di Responsabilità del turno di un animale
  */
 public abstract class TurnStep {
 
     private TurnStep next;
 
     /**
-     * Collega il prossimo passo della catena e lo restituisce per consentire il concatenamento fluido.
+     * Collega il prossimo passo della catena e lo restituisce per consentire il concatenamento fluido
      *
      * @param next prossimo passo da eseguire
      * @return il passo appena collegato
@@ -31,7 +31,7 @@ public abstract class TurnStep {
     }
 
     /**
-     * Logica specifica dello step.
+     * Logica specifica dello step
      *
      * @param context contesto del turno
      * @return true se la catena deve proseguire al passo successivo, false per interromperla

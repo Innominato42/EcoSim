@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Strategia di riproduzione standard: richiede che l'animale sia in età riproduttiva
- * e che la sua energia superi una frazione configurabile dell'energia massima.
+ * Strategia di riproduzione: richiede che l'animale sia in età riproduttiva
+ * e che la sua energia superi una frazione configurabile dell'energia massima
  */
 public class StandardReproductionStrategy implements ReproductionStrategy {
 

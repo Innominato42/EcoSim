@@ -9,8 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Strategia di movimento standard: muove l'animale passo-passo (fino alla sua velocità massima)
- * verso il cibo individuato oppure in direzione casuale se nessun cibo è visibile.
+ * L'animale si muove verso il cibo individuato, oppure in direzione casuale se nessun cibo è visibile
  */
 public class StandardMovementStrategy implements MovementStrategy {
 

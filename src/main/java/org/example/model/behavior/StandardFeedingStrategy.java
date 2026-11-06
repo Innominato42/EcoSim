@@ -10,8 +10,7 @@ import org.example.model.Position;
 import java.util.Optional;
 
 /**
- * Implementazione standard della strategia di alimentazione: cerca la preda/pianta
- * commestibile a distanza minima entro il raggio visivo e ne assorbe l'energia.
+ * L'animale cerca la preda/pianta commestibile più vicina entro il raggio visivo e ne assorbe l'energia
  */
 public class StandardFeedingStrategy implements FeedingStrategy {
 
