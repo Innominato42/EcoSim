@@ -20,13 +20,5 @@ public class SiccitaEvent extends AbstractPlantRateEvent {
         }
     }
 
-    /**
-     * Costruisce un evento Siccità con durata di default (5 turni).
-     *
-     * @param frequency  turni tra un'attivazione e l'altra (EVERY)
-     * @param rateFactor fattore riduttivo nell'intervallo [0.0, 1.0]
-     */
-    public SiccitaEvent(int frequency, double rateFactor) {
-        this(frequency, rateFactor, DEFAULT_DURATION);
-    }
+
 }

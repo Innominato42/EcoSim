@@ -91,5 +91,4 @@ public class EpidemiaEvent implements GlobalEvent {
     @Override
     public int getRemainingTurns() { return remainingTurns; }
 
-    public double getDeathProbability() { return deathProbability; }
 }

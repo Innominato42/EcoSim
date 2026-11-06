@@ -128,12 +128,10 @@ public class SimulationEngine {
                 animalsSnapshot.add(Map.entry(entry.getKey(), animal));
             }
         }
-        // Mescola la lista per garantire l'esecuzione in ordine casuale
         Collections.shuffle(animalsSnapshot, Random.from(random));
 
         for (Map.Entry<Position, Animal> entry : animalsSnapshot) {
             Animal animal = entry.getValue();
-            // Verifica che l'animale non sia stato mangiato da un predatore prima del suo turno d'azione
             if (animal.isAlive()) {
                 animal.act(entry.getKey(), grid, random);
             }
@@ -156,7 +154,6 @@ public class SimulationEngine {
         for (GlobalEvent event : globalEvents) {
             event.updateTurn(currentTurn, grid);
         }
-        // Rimuove eventuali entità decedute a causa di eventi istantanei
         removeDeadEntities();
     }
 
@@ -190,5 +187,4 @@ public class SimulationEngine {
     public Grid getGrid() { return grid; }
     public int getCurrentTurn() { return currentTurn; }
     public SimulationStats getLatestStats() { return latestStats; }
-    public List<GlobalEvent> getGlobalEvents() { return Collections.unmodifiableList(globalEvents); }
 }

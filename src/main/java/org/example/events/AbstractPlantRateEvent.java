@@ -61,10 +61,8 @@ public abstract class AbstractPlantRateEvent implements GlobalEvent {
         } else if (remainingTurns > 0) {
             remainingTurns--;
             if (remainingTurns > 0) {
-                // Mantiene il fattore attivo anche sulle piante nate durante l'evento
                 updatePlantsFactor(grid, this.rateFactor);
             } else {
-                // Ripristina il tasso normale al termine della durata
                 updatePlantsFactor(grid, 1.0);
             }
         }
@@ -90,5 +88,4 @@ public abstract class AbstractPlantRateEvent implements GlobalEvent {
     @Override
     public int getRemainingTurns() { return remainingTurns; }
 
-    public double getRateFactor() { return rateFactor; }
 }
