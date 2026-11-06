@@ -62,9 +62,6 @@ public class SimulationEngine {
         }
     }
 
-    public void removeObserver(SimulationObserver observer) {
-        observers.remove(observer);
-    }
 
     /**
      * Esegue un singolo turno completo della simulazione seguendo i passi della specifica:

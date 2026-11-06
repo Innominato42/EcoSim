@@ -16,7 +16,6 @@ public class StandardMovementStrategy implements MovementStrategy {
     @Override
     public void move(TurnContext context) {
         Animal animal = context.getAnimal();
-        Grid grid = context.getGrid();
         int steps = animal.getSpeed();
 
         Optional<Position> targetOffsetOpt = context.getTargetFoodOffset();
