@@ -7,8 +7,8 @@ import java.util.*;
 import java.util.random.RandomGenerator;
 
 /**
- * Coordina l'esecuzione a turni della simulazione, l'applicazione degli eventi globali,
- * il calcolo delle statistiche e la notifica agli osservatori.
+ * Classe che coordina l'esecuzione a turni della simulazione, l'applicazione di eventi globali, il calcolo delle statistiche
+ * e la notifica agli osservatori.
  * Dipende esclusivamente dalle astrazioni (Entity, Plant, Animal, GlobalEvent, SimulationObserver).
  */
 public class SimulationEngine {
@@ -25,7 +25,7 @@ public class SimulationEngine {
      *
      * @param grid         griglia dell'ecosistema
      * @param globalEvents lista degli eventi globali configurati
-     * @param initialTurn  turno di partenza (0 per nuova simulazione, > 0 se caricato da file di stato)
+     * @param initialTurn  turno di partenza
      * @param random       generatore di numeri casuali
      */
     public SimulationEngine(Grid grid, List<GlobalEvent> globalEvents, int initialTurn, RandomGenerator random) {
@@ -51,7 +51,7 @@ public class SimulationEngine {
     }
 
     /**
-     * Registra un osservatore che verrà notificato ad ogni fine turno.
+     * Aggiunge un osservatore che verrà notificato ad ogni fine turno.
      *
      * @param observer osservatore da aggiungere
      */
@@ -62,11 +62,6 @@ public class SimulationEngine {
         }
     }
 
-    /**
-     * Rimuove un osservatore precedentemente registrato.
-     *
-     * @param observer osservatore da rimuovere
-     */
     public void removeObserver(SimulationObserver observer) {
         observers.remove(observer);
     }
@@ -85,22 +80,16 @@ public class SimulationEngine {
     public SimulationStats step() {
         currentTurn++;
 
-        // Passo 7: Tutte le piante presenti a inizio turno eseguono la propria logica di riproduzione
         executePlantsPhase();
 
-        // Passo 8: Tutti gli animali (in ordine casuale) eseguono il ciclo comportamentale
         executeAnimalsPhase();
 
-        // Passo 9: Le entità morte vengono rimosse dalla griglia
         removeDeadEntities();
 
-        // Passo 10: Aggiornamento e attivazione degli eventi globali se il turno è multiplo della frequenza
         executeGlobalEventsPhase();
 
-        // Passo 11: Aggiornamento delle statistiche globali della simulazione
         this.latestStats = computeStats();
 
-        // Passo 12: Notifica dello stato aggiornato agli osservatori
         notifyObservers();
 
         return this.latestStats;
