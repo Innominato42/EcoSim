@@ -252,7 +252,7 @@ public class SwingGuiView extends JFrame implements SimulationObserver {
 
     private void updateInspector(Grid grid) {
         if (inspectedPosition == null) {
-            inspectorArea.setText("Clicca su una cella della griglia\nper ispezionare i dettagli\ndell'entità presente.");
+            inspectorArea.setText("Clicca su una cella della griglia\nper ispezionare i dettagli\ndell'entita presente.");
             return;
         }
 
@@ -273,13 +273,13 @@ public class SwingGuiView extends JFrame implements SimulationObserver {
             if (entity instanceof Animal animal) {
                 sb.append("Energia: ").append(animal.getEnergy())
                         .append(" / ").append(animal.getMaxEnergy()).append("\n");
-                sb.append("Età: ").append(animal.getAge())
+                sb.append("Eta: ").append(animal.getAge())
                         .append(" / ").append(animal.getMaxAge()).append("\n");
-                sb.append("Età Riprod.: [").append(animal.getMinReproductiveAge())
+                sb.append("Eta Riprod.: [").append(animal.getMinReproductiveAge())
                         .append(" - ").append(animal.getMaxReproductiveAge()).append("]\n");
                 sb.append("Dieta: ").append(animal.getDiet()).append("\n");
                 sb.append("Raggio visivo: ").append(animal.getSightRange()).append("\n");
-                sb.append("Velocità: ").append(animal.getSpeed()).append("\n");
+                sb.append("Velocita: ").append(animal.getSpeed()).append("\n");
             } else if (entity instanceof Plant plant) {
                 sb.append("Energia fornita: ").append(plant.getEnergy()).append("\n");
                 sb.append(String.format("Tasso base: %.2f%n", plant.getBaseReproductionRate()));
