@@ -4,6 +4,7 @@ import org.example.events.GlobalEvent;
 import org.example.model.*;
 
 import java.util.*;
+import java.util.Map.Entry;
 import java.util.random.RandomGenerator;
 
 /**
@@ -62,7 +63,6 @@ public class SimulationEngine {
         }
     }
 
-
     /**
      * Esegue un singolo turno completo della simulazione seguendo i passi della specifica:
      * 1. Riproduzione di tutte le piante
@@ -95,7 +95,7 @@ public class SimulationEngine {
     /**
      * Esegue la simulazione per un numero specificato di turni.
      *
-     * @param turns numero di turni da eseguire (> 0)
+     * @param turns numero di turni da eseguire ({@literal >} 0)
      */
     public void run(int turns) {
         if (turns < 0) {
@@ -107,13 +107,13 @@ public class SimulationEngine {
     }
 
     private void executePlantsPhase() {
-        List<Map.Entry<Position, Plant>> plantsSnapshot = new ArrayList<>();
-        for (Map.Entry<Position, Entity> entry : grid.getAllEntities().entrySet()) {
+        var plantsSnapshot = new ArrayList< Entry<Position, Plant> >();
+        for (Entry<Position, Entity> entry : grid.getAllEntities().entrySet()) {
             if (entry.getValue() instanceof Plant plant && plant.isAlive()) {
                 plantsSnapshot.add(Map.entry(entry.getKey(), plant));
             }
         }
-        for (Map.Entry<Position, Plant> entry : plantsSnapshot) {
+        for (Entry<Position, Plant> entry : plantsSnapshot) {
             Plant plant = entry.getValue();
             if (plant.isAlive()) {
                 plant.reproduce(entry.getKey(), grid, random);
@@ -122,15 +122,17 @@ public class SimulationEngine {
     }
 
     private void executeAnimalsPhase() {
-        List<Map.Entry<Position, Animal>> animalsSnapshot = new ArrayList<>();
-        for (Map.Entry<Position, Entity> entry : grid.getAllEntities().entrySet()) {
+        var animalsSnapshot = new ArrayList< Entry<Position, Animal> >();
+        for (Entry<Position, Entity> entry : grid.getAllEntities().entrySet()) {
             if (entry.getValue() instanceof Animal animal && animal.isAlive()) {
                 animalsSnapshot.add(Map.entry(entry.getKey(), animal));
             }
         }
-        Collections.shuffle(animalsSnapshot, Random.from(random));
+        for (int i = animalsSnapshot.size() - 1; i > 0; i--) {
+            Collections.swap(animalsSnapshot, i, random.nextInt(i + 1));
+        }
 
-        for (Map.Entry<Position, Animal> entry : animalsSnapshot) {
+        for (Entry<Position, Animal> entry : animalsSnapshot) {
             Animal animal = entry.getValue();
             if (animal.isAlive()) {
                 animal.act(entry.getKey(), grid, random);
@@ -140,7 +142,7 @@ public class SimulationEngine {
 
     private void removeDeadEntities() {
         List<Position> deadPositions = new ArrayList<>();
-        for (Map.Entry<Position, Entity> entry : grid.getAllEntities().entrySet()) {
+        for (Entry<Position, Entity> entry : grid.getAllEntities().entrySet()) {
             if (!entry.getValue().isAlive()) {
                 deadPositions.add(entry.getKey());
             }

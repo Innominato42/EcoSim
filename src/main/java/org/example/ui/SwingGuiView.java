@@ -119,7 +119,7 @@ public class SwingGuiView extends JFrame implements SimulationObserver {
 
         JSlider speedSlider = new JSlider(1, 20, 4);
         speedSlider.setPreferredSize(new Dimension(130, 36));
-        speedSlider.setToolTipText("Velocità simulazione (turni al secondo)");
+        speedSlider.setToolTipText("Velocita simulazione (turni al secondo)");
         speedSlider.addChangeListener(e -> {
             int turnsPerSec = speedSlider.getValue();
             simulationTimer.setDelay(1000 / turnsPerSec);
@@ -130,7 +130,7 @@ public class SwingGuiView extends JFrame implements SimulationObserver {
         controlBar.add(startButton);
         controlBar.add(pauseButton);
         controlBar.add(stepButton);
-        controlBar.add(new JLabel("Velocità:"));
+        controlBar.add(new JLabel("Velocita:"));
         controlBar.add(speedSlider);
         controlBar.add(loadCfgBtn);
         controlBar.add(loadStateBtn);

@@ -307,7 +307,9 @@ public class ConfigParser {
                 allPositions.add(new Position(x, y));
             }
         }
-        Collections.shuffle(allPositions, Random.from(random));
+        for (int i = allPositions.size() - 1; i > 0; i--) {
+            Collections.swap(allPositions, i, random.nextInt(i + 1));
+        }
 
         int posIndex = 0;
         for (Map.Entry<String, Integer> entry : spawns.entrySet()) {
