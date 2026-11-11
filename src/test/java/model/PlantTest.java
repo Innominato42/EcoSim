@@ -27,7 +27,7 @@ class PlantTest {
         Position center = new Position(2, 2);
         grid.placeEntity(center, grass);
 
-        Optional<Position> childPos = grass.reproduce(center, grid, new Random(42));
+        Optional<Position> childPos = grass.reproduce(center, grid, new Random(25));
 
         assertTrue(childPos.isPresent());
         assertEquals(2, grid.getAllEntities().size());
@@ -44,7 +44,7 @@ class PlantTest {
         grid.placeEntity(new Position(0, 1), rock);
         grid.placeEntity(new Position(1, 1), rock);
 
-        Optional<Position> childPos = grass.reproduce(corner, grid, new Random(42));
+        Optional<Position> childPos = grass.reproduce(corner, grid, new Random(25));
 
         assertTrue(childPos.isEmpty());
         assertEquals(4, grid.getAllEntities().size());

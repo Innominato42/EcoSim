@@ -36,7 +36,7 @@ class AnimalTest {
         Position start = new Position(5, 5);
         grid.placeEntity(start, rabbit);
 
-        rabbit.act(start, grid, new Random(42));
+        rabbit.act(start, grid, new Random(25));
 
         assertFalse(rabbit.isAlive());
         assertEquals(0, rabbit.getEnergy());
@@ -56,7 +56,7 @@ class AnimalTest {
         grid.placeEntity(rabbitPos, rabbit);
         grid.placeEntity(grassPos, grass);
 
-        rabbit.act(rabbitPos, grid, new Random(42));
+        rabbit.act(rabbitPos, grid, new Random(25));
         assertEquals(34, rabbit.getEnergy());
         assertFalse(grass.isAlive());
         assertEquals(rabbit, grid.getEntityAt(grassPos).orElse(null));
@@ -79,7 +79,7 @@ class AnimalTest {
         grid.placeEntity(new Position(1, 2), grass);  // Più vicina ma ignorata dalla volpe
         grid.placeEntity(new Position(3, 1), rabbit); // A distanza 2: preda valida
 
-        fox.act(new Position(1, 1), grid, new Random(42));
+        fox.act(new Position(1, 1), grid, new Random(25));
 
         assertFalse(rabbit.isAlive());
         assertTrue(grass.isAlive());
@@ -98,7 +98,7 @@ class AnimalTest {
         Position start = new Position(5, 5);
         grid.placeEntity(start, rabbit);
 
-        rabbit.act(start, grid, new Random(42));
+        rabbit.act(start, grid, new Random(25));
         assertEquals(2, grid.getAllEntities().size());
     }
 }

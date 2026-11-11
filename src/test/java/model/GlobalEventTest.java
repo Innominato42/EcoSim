@@ -77,7 +77,7 @@ class GlobalEventTest {
         grid.placeEntity(new Position(2, 2), r1);
         grid.placeEntity(new Position(3, 3), r2);
         assertEquals(4, grid.getAllEntities().size()); // 2 piante + 2 conigli
-        EpidemiaEvent epidemia = new EpidemiaEvent(15, 1.0, new Random(42));
+        EpidemiaEvent epidemia = new EpidemiaEvent(15, 1.0, new Random(25));
         epidemia.apply(grid);
 
         assertFalse(r1.isAlive());

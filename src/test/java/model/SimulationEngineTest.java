@@ -36,7 +36,7 @@ class SimulationEngineTest {
         Position pos = new Position(4, 4);
         grid.placeEntity(pos, dyingRabbit);
 
-        SimulationEngine engine = new SimulationEngine(grid, List.of(), 0, new Random(42));
+        SimulationEngine engine = new SimulationEngine(grid, List.of(), 0, new Random(25));
         SimulationStats stats = engine.step();
 
         assertEquals(1, stats.turn());
@@ -50,7 +50,7 @@ class SimulationEngineTest {
         grid.placeEntity(new Position(2, 2), grass);
 
         GlobalEvent siccita = new SiccitaEvent(2, 0.5, 4);
-        SimulationEngine engine = new SimulationEngine(grid, List.of(siccita), 0, new Random(42));
+        SimulationEngine engine = new SimulationEngine(grid, List.of(siccita), 0, new Random(25));
 
         List<SimulationStats> receivedNotifications = new ArrayList<>();
         engine.addObserver((g, stats) -> receivedNotifications.add(stats));

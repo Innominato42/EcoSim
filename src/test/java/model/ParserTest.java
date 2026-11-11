@@ -35,7 +35,7 @@ class ParserTest {
                 SPAWN Roccia 20
                 """;
 
-        ConfigParser parser = new ConfigParser(new Random(42));
+        ConfigParser parser = new ConfigParser(new Random(25));
         SimulationConfig config = parser.parse(configText);
 
         Grid grid = config.getGrid();
